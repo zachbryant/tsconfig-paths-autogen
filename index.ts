@@ -53,7 +53,7 @@ function _generatePaths(): pathsType {
 	};
 	aliases = getPathsFromDir(aliases, '', 0, _maxDirectoryDepth);
 	for (const [key, value] of Object.entries(_includeAliasForDirectories)) {
-		aliases = getPathAliases(value , key, aliases);
+		aliases = getPathAliases(value, key, aliases);
 	}
 	return aliases;
 }
