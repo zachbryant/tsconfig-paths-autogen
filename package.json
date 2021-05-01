@@ -2,7 +2,7 @@
   "name": "tsconfig-paths-autogen",
   "version": "1.0.0",
   "description": "Autogenerate tsconfig paths based on folder structure.",
-  "main": "index.min.jss",
+  "main": "index.min.js",
   "files": [
     "index.min.js"
   ],
