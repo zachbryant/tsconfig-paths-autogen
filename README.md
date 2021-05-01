@@ -5,7 +5,7 @@ A plugin for when configuring path aliases gets old. It reads your source struct
 **function generatePaths(baseUrl: string, options?: TSPathsAutogenOptions)**
 
 - **baseUrl**: The baseUrl used in your tsconfig
-- **Options**:
+- **options**:
   - **rootAlias**: What each alias will start with, such as the '@' in '@components/'
   - **customAliasMap**: Map a custom alias to a directory name. e.g., types becomes localtypes.
   - **maxDirectoryDepth**: How far deep in sub folders aliases should be generated.
