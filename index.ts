@@ -1,21 +1,25 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call */
+
 const fs = require('fs');
 
-let _baseUrl = undefined;
-let _rootAlias = undefined;
-let _customAliasMap = undefined;
-let _maxDirectoryDepth = undefined;
-let _excludeAliasForDirectories = undefined;
-let _excludeAliasForSubDirectories = undefined;
-let _includeAliasForDirectories = undefined;
-
+type pathsType = Record<string, string[]>;
+type stringMapping = Record<string, string>;
 interface TSPathsAutogenOptions {
 	rootAlias?: string;
-	customAliasMap?: object;
+	customAliasMap?: stringMapping;
 	maxDirectoryDepth?: number;
 	excludeAliasForDirectories?: string[];
 	excludeAliasForSubDirectories?: string[];
-	includeAliasForDirectories?: object;
+	includeAliasForDirectories?: stringMapping;
 }
+
+let _baseUrl: string = undefined;
+let _rootAlias: TSPathsAutogenOptions['rootAlias'] = undefined;
+let _customAliasMap: TSPathsAutogenOptions['customAliasMap'] = undefined;
+let _maxDirectoryDepth: TSPathsAutogenOptions['maxDirectoryDepth'] = undefined;
+let _excludeAliasForDirectories: TSPathsAutogenOptions['excludeAliasForDirectories'] = undefined;
+let _excludeAliasForSubDirectories: TSPathsAutogenOptions['excludeAliasForSubDirectories'] = undefined;
+let _includeAliasForDirectories: TSPathsAutogenOptions['includeAliasForDirectories'] = undefined;
 
 /**
  *
@@ -28,7 +32,7 @@ interface TSPathsAutogenOptions {
  * @param includeAliasForDirectories Specifically generate an alias for each of the given directories.
  * @returns An object consistent with the paths type in tsconfig's compilerOptions.
  */
-export default function generatePaths(baseUrl: string, options?: TSPathsAutogenOptions) {
+export default function generatePaths(baseUrl: string, options?: TSPathsAutogenOptions): pathsType {
 	_baseUrl = baseUrl;
 
 	_rootAlias = options.rootAlias ?? '@';
@@ -42,20 +46,20 @@ export default function generatePaths(baseUrl: string, options?: TSPathsAutogenO
 }
 
 // Import aliases like `import("@Public/img/myasset.png")`
-function _generatePaths() {
-	let aliases = {
+function _generatePaths(): pathsType {
+	let aliases: pathsType = {
 		[`${_rootAlias}/*`]: ['./*'], // current dir
 		'~/*': ['../*'], // parent dir
 	};
 	aliases = getPathsFromDir(aliases, '', 0, _maxDirectoryDepth);
-	for (let [key, value] of Object.entries(_includeAliasForDirectories)) {
-		aliases = getPathAliases(value, key, aliases);
+	for (const [key, value] of Object.entries(_includeAliasForDirectories)) {
+		aliases = getPathAliases(value , key, aliases);
 	}
 	return aliases;
 }
 
 // Get a list of sub-directories
-function getDirectories(source) {
+function getDirectories(source: string): string[] {
 	return fs
 		.readdirSync(source, { withFileTypes: true })
 		.filter((_) => _.isDirectory())
@@ -63,7 +67,12 @@ function getDirectories(source) {
 		.map((_) => _.name);
 }
 
-function getPathsFromDir(paths, pathString, depth, maxDepth) {
+function getPathsFromDir(
+	paths: pathsType,
+	pathString: string,
+	depth: number,
+	maxDepth: number
+): pathsType {
 	if (depth > maxDepth) return;
 
 	const subDirsExcluded = _excludeAliasForSubDirectories.some((_) => {
@@ -83,7 +92,7 @@ function getPathsFromDir(paths, pathString, depth, maxDepth) {
 }
 
 // Resolve the final path alias and add to the paths object
-function getPathAliases(pathString, dirName, paths) {
+function getPathAliases(pathString: string, dirName: string, paths: pathsType): pathsType {
 	const index = `${pathString}/index`;
 	const resolvedName = resolveNameConflicts(dirName);
 	const alias = `${_rootAlias}${resolvedName}`;
@@ -93,6 +102,6 @@ function getPathAliases(pathString, dirName, paths) {
 }
 
 // Sort out any name conflicts or custom aliases
-function resolveNameConflicts(name) {
+function resolveNameConflicts(name: string): string {
 	return _customAliasMap[name] ?? name;
 }

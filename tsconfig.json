@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "exclude": ["dist", "node_modules", "test"],
-  "include": ["src/**/*"],
+  "include": ["index.ts"],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "src",
