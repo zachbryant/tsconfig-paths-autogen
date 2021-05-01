@@ -18,7 +18,7 @@
     "path",
     "paths",
     "generate",
-    "auto",
+    "auto"
   ],
   "scripts": {
     "build": "tsc",
