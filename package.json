@@ -1,6 +1,6 @@
 {
   "name": "tsconfig-paths-autogen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Autogenerate tsconfig paths based on folder structure.",
   "main": "dist/index.min.js",
   "files": [
@@ -9,6 +9,17 @@
   "repository": "git@github.com:zachbryant/tsconfig-paths-autogen.git",
   "author": "Zach Bryant <zdb282@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "typescript",
+    "tsconfig",
+    "tsconfig.json",
+    "tsconfig.js",
+    "folder",
+    "path",
+    "paths",
+    "generate",
+    "auto",
+  ],
   "scripts": {
     "build": "tsc",
     "lint": "eslint index.ts --fix",
