@@ -1,6 +1,6 @@
 {
   "name": "tsconfig-paths-autogen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Autogenerate tsconfig paths based on folder structure.",
   "main": "dist/index.min.js",
   "files": [
@@ -21,10 +21,10 @@
     "auto"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && yarn minify",
     "lint": "eslint index.ts --fix",
     "minify": "terser --compress --mangle toplevel,reserved=['require','generatePaths','baseUrl','rootAlias','customAliasMap','maxDirectoryDepth','excludeAliasForDirectories','excludeAliasForSubDirectories','includeAliasForDirectories'] --comments false -o dist/index.min.js -- dist/index.js",
-    "prepublishOnly": "npm-run-all -s build lint minify"
+    "prepublishOnly": "npm-run-all -s build lint"
   },
   "devDependencies": {
     "@types/node": "^15.0.1",
