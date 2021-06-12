@@ -1,0 +1,9 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "tsconfig.js",
+  "license": "MIT",
+  "devDependencies": {
+    "onmyjs": "^1.1.0"
+  }
+}

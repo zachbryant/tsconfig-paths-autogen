@@ -1,0 +1,95 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "jsx": "react",
+    "newLine": "lf",
+    "baseUrl": "src",
+    "paths": {
+      "@a/*": [
+        "a/*",
+        "a/index"
+      ],
+      "@a": [
+        "a/index"
+      ],
+      "@b/*": [
+        "b/*",
+        "b/index"
+      ],
+      "@b": [
+        "b/index"
+      ],
+      "@c/*": [
+        "b/c/*",
+        "b/c/index"
+      ],
+      "@c": [
+        "b/c/index"
+      ],
+      "@d/*": [
+        "b/c/d/*",
+        "b/c/d/index"
+      ],
+      "@d": [
+        "b/c/d/index"
+      ],
+      "@e/*": [
+        "e/*",
+        "e/index"
+      ],
+      "@e": [
+        "e/index"
+      ],
+      "@f/*": [
+        "e/f/*",
+        "e/f/index"
+      ],
+      "@f": [
+        "e/f/index"
+      ],
+      "@common/*": [
+        "b/c/d/*",
+        "b/c/d/index"
+      ],
+      "@common": [
+        "b/c/d/index"
+      ],
+      "@/*": [
+        "./*"
+      ],
+      "~/*": [
+        "../*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "lib",
+    "build",
+    "node_modules",
+    "scripts",
+    "webpack",
+    "jest",
+    "tests",
+    "templates"
+  ]
+}
