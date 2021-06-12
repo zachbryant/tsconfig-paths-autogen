@@ -33,7 +33,7 @@ let _includeAliasForDirectories: TSPathsAutogenOptions['includeAliasForDirectori
  * @param includeAliasForDirectories Specifically generate an alias for each of the given directories.
  * @returns An object consistent with the paths type in tsconfig's compilerOptions.
  */
-export default function generatePaths(baseUrl: string, options?: TSPathsAutogenOptions): pathsType {
+function generatePaths(baseUrl: string, options?: TSPathsAutogenOptions): pathsType {
 	_baseUrl = baseUrl;
 
 	_rootAlias = options.rootAlias ?? '@';
@@ -45,6 +45,7 @@ export default function generatePaths(baseUrl: string, options?: TSPathsAutogenO
 
 	return _generatePaths();
 }
+export { generatePaths };
 
 // Import aliases like `import("@Public/img/myasset.png")`
 function _generatePaths(): pathsType {
