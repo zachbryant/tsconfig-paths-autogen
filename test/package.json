@@ -4,6 +4,6 @@
   "main": "tsconfig.js",
   "license": "MIT",
   "devDependencies": {
-    "onmyjs": "^1.1.0"
+    "onmyjs": "^2.0.2"
   }
 }
