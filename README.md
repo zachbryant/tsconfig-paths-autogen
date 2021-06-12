@@ -42,61 +42,33 @@ Based on this sample directory structure:
 
 ```
 src
-├── assets
-│   ├── images
-│   │   └── ...
-│   └── styles
-│       └── ...
-├── components
-│   └── common (empty folder)
-├── config
-│   ├── constants
-│   │   └── ...
-├── layouts
-│   └── ...
-├── models
-│   └── ...
-├── pages
-│   └── ...
-├── stories
-│   └── ...
-├── types
-│   └── ...
-└── utils
-    └── ...
+├── a
+├── b
+│   └── c
+│       └── d
+└── e
+    └── f
 ```
 
 we would see something like:
 
 ```json
 "paths": {
+  "@a": ["a/index"],
+  "@a/*": ["a/*", "a/index"],
+  "@d": ["b/c/d/index"],
+  "@d/*": ["b/c/d/*", "b/c/d/index"],
+  "@c": ["b/c/index"],
+  "@c/*": ["b/c/*", "b/c/index"],
+  "@b": ["b/index"],
+  "@b/*": ["b/*", "b/index"],
+  "@f": ["e/f/index"],
+  "@f/*": ["e/f/*", "e/f/index"],
+  "@e": ["e/index"],
+  "@e/*": ["e/*", "e/index"],
+  "@common": ["b/c/d/index"],
+  "@common/*": ["b/c/d/*", "b/c/d/index"],
   "@/*": ["./*"],
-  "~/*": ["../*"],
-  "@assets/*": ["stories/assets/*", "stories/assets/index"],
-  "@assets": ["stories/assets/index"],
-  "@images/*": ["assets/images/*", "assets/images/index"],
-  "@images": ["assets/images/index"],
-  "@styles/*": ["assets/styles/*", "assets/styles/index"],
-  "@styles": ["assets/styles/index"],
-  "@components/*": ["components/*", "components/index"],
-  "@components": ["components/index"],
-  "@common/*": ["components/common/*", "components/common/index"],
-  "@common": ["components/common/index"],
-  "@config/*": ["config/*", "config/index"],
-  "@config": ["config/index"],
-  "@constants/*": ["config/constants/*", "config/constants/index"],
-  "@constants": ["config/constants/index"],
-  "@layouts/*": ["layouts/*", "layouts/index"],
-  "@layouts": ["layouts/index"],
-  "@models/*": ["models/*", "models/index"],
-  "@models": ["models/index"],
-  "@pages/*": ["pages/*", "pages/index"],
-  "@pages": ["pages/index"],
-  "@stories/*": ["stories/*", "stories/index"],
-  "@stories": ["stories/index"],
-  "@localtypes/*": ["types/*", "types/index"],
-  "@localtypes": ["types/index"],
-  "@utils/*": ["utils/*", "utils/index"],
-  "@utils": ["utils/index"]
+  "~/*": ["../*"]
 }
 ```
