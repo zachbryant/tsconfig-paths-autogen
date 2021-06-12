@@ -17,7 +17,10 @@ Returns an object consistent with the paths type in tsconfig's compilerOptions.
 
 ## Sample Usage
 
+`node tsconfig.js`
+
 ```javascript
+// tsconfig.js
 const { generatePaths } = require('tsconfig-paths-autogen');
 module.exports = {
   compilerOptions: {
