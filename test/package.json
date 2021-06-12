@@ -5,5 +5,8 @@
   "license": "MIT",
   "devDependencies": {
     "onmyjs": "^2.0.2"
+  },
+  "scripts": {
+    "test": "node tsconfig.js && diff expected.json tsconfig.json"
   }
 }

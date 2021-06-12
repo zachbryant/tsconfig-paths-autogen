@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const generatePaths = require('tsconfig-paths-autogen');
+const { generatePaths } = require('tsconfig-paths-autogen');
 const { onmyjs } = require('onmyjs');
 
 const baseUrl = 'src';

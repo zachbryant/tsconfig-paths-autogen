@@ -21,9 +21,9 @@ callsites@^3.1.0:
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
-onmyjs@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/onmyjs/-/onmyjs-1.1.0.tgz#1cc35e3e7ebe7622eb54fdc2c2ddf27eb4eecee4"
-  integrity sha512-HPzpmx9bZyHyF0aLlsU0d/P8bBDhsPE1tzltX1TwOUN5yefSYhO0d2UA95YeOdPa1oehu78mj3HJZzb51Y+YNQ==
+onmyjs@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/onmyjs/-/onmyjs-2.0.2.tgz#2e846c7265286bdd4fc283c8f8556d8d26ae1346"
+  integrity sha512-TC05oSAnbsb8FAqHwO/+ZeskIc0+MFvt+7SyVwxCfS6EgfFO15YWMjC+RentdPIQrduR2p8XluRJxlFmsXhBPA==
   dependencies:
     caller-path "^3.0.1"
