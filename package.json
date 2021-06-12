@@ -6,7 +6,7 @@
   "files": [
     "dist/index.min.js"
   ],
-  "repository": "git@github.com:zachbryant/tsconfig-paths-autogen.git",
+  "repository": "https://github.com/zachbryant/tsconfig-paths-autogen",
   "author": "Zach Bryant <zdb282@gmail.com>",
   "license": "MIT",
   "keywords": [
