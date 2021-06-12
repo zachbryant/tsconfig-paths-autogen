@@ -1,6 +1,6 @@
 # TSconfig Paths Auto Generator
 
-A plugin for when configuring path aliases gets old. It reads your source structure and creates intellisense-friendly paths for your typescript config. Best used with [onmyjs](https://www.npmjs.com/package/onmyjs) config to JSON exporter.
+A plugin for when configuring path aliases gets old. It reads your source structure and creates intellisense-friendly paths/ordering for your typescript config. Best used with [onmyjs](https://www.npmjs.com/package/onmyjs) config to JSON exporter 😉.
 
 **function generatePaths(baseUrl: string, options?: TSPathsAutogenOptions)**
 
@@ -18,7 +18,7 @@ Returns an object consistent with the paths type in tsconfig's compilerOptions.
 ## Sample Usage
 
 ```javascript
-const generatePaths = require('tsconfig-paths-autogen').default;
+const { generatePaths } = require('tsconfig-paths-autogen');
 module.exports = {
   compilerOptions: {
     ...
@@ -63,7 +63,7 @@ src
     └── ...
 ```
 
-we would see the resulting json:
+we would see something like:
 
 ```json
 "paths": {
