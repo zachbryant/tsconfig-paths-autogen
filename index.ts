@@ -18,7 +18,8 @@ let _rootAlias: TSPathsAutogenOptions['rootAlias'] = undefined;
 let _customAliasMap: TSPathsAutogenOptions['customAliasMap'] = undefined;
 let _maxDirectoryDepth: TSPathsAutogenOptions['maxDirectoryDepth'] = undefined;
 let _excludeAliasForDirectories: TSPathsAutogenOptions['excludeAliasForDirectories'] = undefined;
-let _excludeAliasForSubDirectories: TSPathsAutogenOptions['excludeAliasForSubDirectories'] = undefined;
+let _excludeAliasForSubDirectories: TSPathsAutogenOptions['excludeAliasForSubDirectories'] =
+	undefined;
 let _includeAliasForDirectories: TSPathsAutogenOptions['includeAliasForDirectories'] = undefined;
 
 /**
@@ -47,14 +48,15 @@ export default function generatePaths(baseUrl: string, options?: TSPathsAutogenO
 
 // Import aliases like `import("@Public/img/myasset.png")`
 function _generatePaths(): pathsType {
-	let aliases: pathsType = {
-		[`${_rootAlias}/*`]: ['./*'], // current dir
-		'~/*': ['../*'], // parent dir
-	};
-	aliases = getPathsFromDir(aliases, '', 0, _maxDirectoryDepth);
+	let aliases: pathsType = getPathsFromDir({}, '', 0, _maxDirectoryDepth);
 	for (const [key, value] of Object.entries(_includeAliasForDirectories)) {
 		aliases = getPathAliases(value, key, aliases);
 	}
+	aliases = {
+		...aliases,
+		[`${_rootAlias}/*`]: ['./*'], // current dir
+		'~/*': ['../*'], // parent dir
+	};
 	return aliases;
 }
 
@@ -84,8 +86,8 @@ function getPathsFromDir(
 	for (const dirName of getDirectories(`${_baseUrl}/${pathString}`)) {
 		const newPathString = [pathString, dirName].filter(Boolean).join('/');
 		paths = {
-			...getPathAliases(newPathString, dirName, paths),
 			...getPathsFromDir(paths, newPathString, depth + 1, maxDepth),
+			...getPathAliases(newPathString, dirName, paths),
 		};
 	}
 	return paths;
@@ -96,8 +98,8 @@ function getPathAliases(pathString: string, dirName: string, paths: pathsType): 
 	const index = `${pathString}/index`;
 	const resolvedName = resolveNameConflicts(dirName);
 	const alias = `${_rootAlias}${resolvedName}`;
-	paths[`${alias}/*`] = [`${pathString}/*`, index];
 	paths[`${alias}`] = [index];
+	paths[`${alias}/*`] = [`${pathString}/*`, index];
 	return paths;
 }
 
