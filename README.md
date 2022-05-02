@@ -2,6 +2,8 @@
 
 A plugin for when configuring path aliases gets old. It reads your source structure and creates intellisense-friendly paths/ordering for your typescript config. Best used with [onmyjs](https://www.npmjs.com/package/onmyjs) config to JSON exporter 😉.
 
+0 dependencies, 1kB minified.
+
 **function generatePaths(baseUrl: string, options?: TSPathsAutogenOptions)**
 
 - **baseUrl**: The baseUrl used in your tsconfig
@@ -71,4 +73,21 @@ we would see something like:
   "@/*": ["./*"],
   "~/*": ["../*"]
 }
+```
+
+### Integrating in package.json scripts
+A few ways you might consider integrating this are:
+- Watch for changes in tsconfig, then re-emit json and reload dev-server
+```
+  "scripts": { 
+      "dev": "nodemon -w tsconfig.js --exec \"run-s build:tsconfig dev:parcel\"" 
+  }
+```
+- Or, use prebuild/prestart scripts
+```
+  "scripts": {
+    "prebuild": "node tsconfig.js",
+    "prestart": "node tsconfig.js"
+    ...
+  }
 ```
